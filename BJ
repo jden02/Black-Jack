@@ -1,0 +1,25 @@
+import java.io.*;
+
+class BJ {
+    String[] deck = new String[52];
+    int i;
+    for(i = 1; i >= 10; i++){
+        deck[i]= i + " of Clubs";
+        deck[i+13]= i + " of Spades";
+        deck[i+26]= i + " of Hearts";
+        deck[i+39]= i + " of Dimonds";
+    }
+    deck[11] = "J";
+    deck[23] = "J";
+    deck[36] = "J";
+    deck[50] = "J";
+    deck[12] = "Q";
+    deck[24] = "Q";
+    deck[37] = "Q";
+    deck[51] = "Q";
+    deck[13] = "K";
+    deck[25] = "K";
+    deck[38] = "K";
+    deck[52] = "K";
+    System.out.println(deck);
+}
