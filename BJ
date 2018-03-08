@@ -1,25 +1,62 @@
 import java.io.*;
+import java.util.Random;
 
-class BJ {
-    String[] deck = new String[52];
-    int i;
-    for(i = 1; i >= 10; i++){
-        deck[i]= i + " of Clubs";
-        deck[i+13]= i + " of Spades";
-        deck[i+26]= i + " of Hearts";
-        deck[i+39]= i + " of Dimonds";
+public class blackJack {
+
+    public String [] setDeck (String[] deck) {
+        //sets deck of all non numerical cards
+        deck[0] ="Ace of Clubs";
+        deck[1] ="Ace of Spades";
+        deck[2] ="Ace of Hearts";
+        deck[3] ="Ace of Diamonds";
+        deck[4]="J of Clubs";
+        deck[5]="J of Spades";
+        deck[6]="J of Hearts";
+        deck[7]="J of Diamonds";
+        deck[8]="Q of Clubs";
+        deck[9]="Q of Spades";
+        deck[10]="Q of Hearts";
+        deck[11]="Q of Diamonds";
+        deck[12]="K of Clubs";
+        deck[13]="K of Spades";
+        deck[14]="K of Hearts";
+        deck[15]="K of Diamond";
+        //sets deck of all numerical cards
+        int dc = 2;
+        for (int i = 16; i <= 24;i++){
+            deck[i] = dc + " of Clubs";
+            dc++;
+        }
+        dc = 2;
+        for (int i = 25; i <= 33;i++){
+            deck[i] = dc + " of Spades";
+            dc++;
+        }
+        dc = 2;
+        for (int i = 34; i <= 42;i++){
+            deck[i] = dc + " of Hearts";
+            dc++;
+        }
+        dc = 2;
+        for (int i = 43; i <= 51;i++) {
+            deck[i] = dc + " of Diamonds";
+            dc++;
+        }
+        return deck;
+        public String [] discard (String[] discard) {
+
+        }
+        public String [] deal (String[] deal) {
+
+        }
+
+
+    public static void main(String[] args) {
+        //creates deck
+        blackJack a = new blackJack();
+        String[] deck = new String[52];
+        a.setDeck(deck);
+        Random r = new Random(2);
+
     }
-    deck[11] = "J";
-    deck[23] = "J";
-    deck[36] = "J";
-    deck[50] = "J";
-    deck[12] = "Q";
-    deck[24] = "Q";
-    deck[37] = "Q";
-    deck[51] = "Q";
-    deck[13] = "K";
-    deck[25] = "K";
-    deck[38] = "K";
-    deck[52] = "K";
-    System.out.println(deck);
 }
