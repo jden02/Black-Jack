@@ -50,22 +50,30 @@ public class blackJack {
         return deck;
     }
 
-    public String [] discard (String[] discard) {
+    public String [] Deal (String[] p1) {
+        int c1 = r.nextInt();
+        int c2 = r.nextInt();
+        int c3 = r.nextInt();
+        int c4 = r.nextInt();
+        p1[1] = deck[c1];
+        p1[2] = deck[c2];
+        dealer[1] = deck[c3];
+        dealer[2] = deck[c4];
+        deck[c1] = null;
+        deck[c2] = null;
 
-    }
-    public String [] deal (String[] deal) {
-        p1[1] = deck[r];
-        p1[2] = deck[r];
         return p1;
     }
 
+    public String [] Play (String[] play){
 
+    }
 
 
     public static void main(String[] args) {
             //creates deck
             blackJack a = new blackJack();
             a.setDeck();
-            a.deal();
+            a.Deal();
     }
 }
