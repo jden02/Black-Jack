@@ -5,13 +5,11 @@ import java.util.Arraylist;
 
 public class blackJack {
     int rc = 52;
-    String[] deck = new String[52]; //this is the deck of cards that will be used to play the game of black jack
     Random r = new Random();//this will be used to pick random cards from the deck mentioned above
-    String[] p1 = new String [2];//this is the player's hand
-    String[] dealer = new String [2];//this is the dealer's hand
-    
+    Arraylist<String> p1 = new Arraylist<>;//this is the player's hand
+    Arraylist<String> dealer = new Arraylist<>;//this is the dealer's hand
     Arraylist<String> deck = new Arraylist<>;
-    
+
 
     public String [] setDeck (String[] deck) {
         //sets deck of all non numerical cards
@@ -55,7 +53,7 @@ public class blackJack {
         return deck;
     }
 
-    public String [] deal (String[] p1) {
+    public void deal (Arraylist<String> p1) {
         int c1 = r.nextInt(rc);
         rc--;
         int c2 = r.nextInt(rc);
@@ -64,32 +62,46 @@ public class blackJack {
         rc--;
         int c4 = r.nextInt(rc);
         rc--;
-        p1[0] = deck.get(c1);
-        p1[1] = deck.get(c2);
-        dealer[0] = deck.get(c3);
-        dealer[1] = deck.get(c4);
+        p1.add (deck.get(c1));
+        p1.add (deck.get(c2));
+        dealer.add (deck.get(c3));
+        dealer.add (deck.get(c4));
         deck.remove(c1);
         deck.remove(c2);
         deck.remove(c3);
         deck.remove(c4);
-        return p1;
+        System.out.println("The dealer's cards: %s", dealer.get(0));
+        System.out.println("Your hand: %s", p1.get);
     }
-
-    public String hitStay (Arraylist<String> pd){
-        System.out.println("Choose h for hit or s for stay");
-        //corect?
-        String pi = s.next();
-        if(pi == "s"){
-            
+    
+    public void dealer(){
+        
+        
+    }
+    
+    public boolean isBust(){
+        
+    }
+    
+    public boolean isBJ(){
+        
+    }
+    
+    public String hitStay (String pd){
+        if(pd == "h"){
+            //add a card
+            //show hand
+        }else if(pd == "s"){
+            //show hand
         }
-
+        
     }
 
 
     public static void main(String[] args) {
-            //creates deck
-            blackJack a = new blackJack();
-            a.setDeck();
-            a.Deal();
+        //creates deck
+        blackJack a = new blackJack();
+        a.setDeck();
+        a.Deal();
     }
 }
