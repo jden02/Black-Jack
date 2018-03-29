@@ -1,17 +1,18 @@
 import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Arraylist;
+import java.util.ArrayList;
 
 public class blackJack {
     int rc = 52;
     Random r = new Random();//this will be used to pick random cards from the deck mentioned above
-    Arraylist<String> p1 = new Arraylist<>;//this is the player's hand
-    Arraylist<String> dealer = new Arraylist<>;//this is the dealer's hand
-    Arraylist<String> deck = new Arraylist<>;
+    ArrayList p1 = new ArrayList();//this is the player's hand
+    ArrayList dealer = new ArrayList();//this is the dealer's hand
+    static final ArrayList deck = new ArrayList();
+    Scanner s = new Scanner(System.in);
 
 
-    public String [] setDeck (String[] deck) {
+    public ArrayList setDeck (ArrayList deck) {
         //sets deck of all non numerical cards
         deck.add("Ace of Clubs");
         deck.add("Ace of Spades");
@@ -53,7 +54,7 @@ public class blackJack {
         return deck;
     }
 
-    public void deal (Arraylist<String> p1) {
+    public void deal (ArrayList p1) {
         int c1 = r.nextInt(rc);
         rc--;
         int c2 = r.nextInt(rc);
@@ -70,13 +71,11 @@ public class blackJack {
         deck.remove(c2);
         deck.remove(c3);
         deck.remove(c4);
-        System.out.println("The dealer's cards: %s", dealer.get(0));
-        System.out.println("Your hand: %s", p1.get);
+        System.out.println("The dealer's cards: " + dealer.get(0));
+        System.out.println("Your hand: "+ p1.get(0) + ", " + p1.get(1));
     }
 
-    public void dealer(){
-
-
+    /*public String dealer(){
     }
 
     public boolean isBust(){
@@ -86,35 +85,33 @@ public class blackJack {
     public boolean isBJ(){
 
     }
+    */
 
-    public String hitStay (String pd){
-        int counter = 0;
-        while (counter<1){
-            if(pd == "h"){
-                //add a card
-                //show hand
-                int h1 = r.nextInt(rc);
-                rc--;
-                p1.add (deck.get(h1));
-                deck.remove(h1);
-                System.out.println(p1);
-                counter++
-            }else if(pd == "s"){
-                //show hand
-                System.out.println(p1);
-                counter++
-            }else{
-                System.out.println("Invalid input.")
+    public void hitStay (){
+        System.out.println("hit (h) or stay (s)");
+        String hs = s.nextLine();
+        if(hs == "h"){
+            //add a card
+            //show hand
+            int h1 = r.nextInt(rc);
+            rc--;
+            p1.add (deck.get(h1));
+            deck.remove(h1);
+            System.out.println(p1);
+        }else if(hs == "s"){
+            //show hand
+            System.out.println(p1);
+        }else {
+                System.out.println("Invalid input.");
             }
-        }
-
     }
 
 
     public static void main(String[] args) {
         //creates deck
         blackJack a = new blackJack();
-        a.setDeck();
+        a.setDeck(deck);
         a.deal(deck);
+        a.hitStay();
     }
 }
