@@ -73,28 +73,41 @@ public class blackJack {
         System.out.println("The dealer's cards: %s", dealer.get(0));
         System.out.println("Your hand: %s", p1.get);
     }
-    
+
     public void dealer(){
-        
-        
+
+
     }
-    
+
     public boolean isBust(){
-        
+
     }
-    
+
     public boolean isBJ(){
-        
+
     }
-    
+
     public String hitStay (String pd){
-        if(pd == "h"){
-            //add a card
-            //show hand
-        }else if(pd == "s"){
-            //show hand
+        int counter = 0;
+        while (counter<1){
+            if(pd == "h"){
+                //add a card
+                //show hand
+                int h1 = r.nextInt(rc);
+                rc--;
+                p1.add (deck.get(h1));
+                deck.remove(h1);
+                System.out.println(p1);
+                counter++
+            }else if(pd == "s"){
+                //show hand
+                System.out.println(p1);
+                counter++
+            }else{
+                System.out.println("Invalid input.")
+            }
         }
-        
+
     }
 
 
@@ -102,6 +115,6 @@ public class blackJack {
         //creates deck
         blackJack a = new blackJack();
         a.setDeck();
-        a.Deal();
+        a.deal(deck);
     }
 }
