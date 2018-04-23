@@ -57,17 +57,23 @@ public class blackJack {
 
     public void deal (ArrayList p1) {
         int c1 = r.nextInt(rc);
+        //System.out.println(c1);
         rc--;
         int c2 = r.nextInt(rc);
+        //System.out.println(c2);
         rc--;
         int c3 = r.nextInt(rc);
+        //System.out.println(c3);
         rc--;
         int c4 = r.nextInt(rc);
+        //System.out.println(c4);
         rc--;
-        p1.add (deck.get(c1));
-        p1.add (deck.get(c2));
+        p1.add (0,deck.get(c1));
+        p1.add (1,deck.get(c2));
         dealer.add (deck.get(c3));
         dealer.add (deck.get(c4));
+        //System.out.println("Your hand: "+ deck.get(c1) + ", " + deck.get(c2));
+        //System.out.println("Your hand: "+ p1.get(0) + ", " + p1.get(1));
         deck.remove(c1);
         deck.remove(c2);
         deck.remove(c3);
