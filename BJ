@@ -13,7 +13,7 @@ public class blackJack {
     Scanner s = new Scanner(System.in);
 
 
-    public ArrayList setDeck (ArrayList deck) {
+    public ArrayList setDeck(ArrayList deck) {
         //sets deck of all non numerical cards
         deck.add("Ace of Clubs");
         deck.add("Ace of Spades");
@@ -55,7 +55,7 @@ public class blackJack {
         return deck;
     }
 
-    public void deal (ArrayList p1) {
+    public void deal(ArrayList p1) {
         int c1 = r.nextInt(rc);
         //System.out.println(c1);
         rc--;
@@ -68,10 +68,10 @@ public class blackJack {
         int c4 = r.nextInt(rc);
         //System.out.println(c4);
         rc--;
-        p1.add (0,deck.get(c1));
-        p1.add (1,deck.get(c2));
-        dealer.add (deck.get(c3));
-        dealer.add (deck.get(c4));
+        p1.add(0, deck.get(c1));
+        p1.add(1, deck.get(c2));
+        dealer.add(deck.get(c3));
+        dealer.add(deck.get(c4));
         //System.out.println("Your hand: "+ deck.get(c1) + ", " + deck.get(c2));
         //System.out.println("Your hand: "+ p1.get(0) + ", " + p1.get(1));
         deck.remove(c1);
@@ -79,166 +79,193 @@ public class blackJack {
         deck.remove(c3);
         deck.remove(c4);
         System.out.println("The dealer's cards: " + dealer.get(0));
-        System.out.println("Your hand: "+ p1.get(0) + ", " + p1.get(1));
+        System.out.println("Your hand: " + p1.get(0) + ", " + p1.get(1));
     }
 
-    public String dealer(){
+    public String dealer() {
         int dealerTotal = 0;
-        for (int i = 0;i < p1.size(); i++ ){
-            if(p1.subList(i,i).contains("K")){
+        for (int i = 0; i < p1.size(); i++) {
+            if (p1.subList(i, i).contains("K")) {
                 dealerTotal = dealerTotal + 10;
-            }else if(p1.subList(i,i).contains("Q")){
+            } else if (p1.subList(i, i).contains("Q")) {
                 dealerTotal = dealerTotal + 10;
-            }else if(p1.subList(i,i).contains("J")){
+            } else if (p1.subList(i, i).contains("J")) {
                 dealerTotal = dealerTotal + 10;
-            }else if(p1.subList(i,i).contains("10")){
+            } else if (p1.subList(i, i).contains("10")) {
                 dealerTotal = dealerTotal + 10;
-            }else if(p1.subList(i,i).contains("9")){
+            } else if (p1.subList(i, i).contains("9")) {
                 dealerTotal = dealerTotal + 9;
-            }else if(p1.subList(i,i).contains("8")){
+            } else if (p1.subList(i, i).contains("8")) {
                 dealerTotal = dealerTotal + 8;
-            }else if(p1.subList(i,i).contains("7")){
+            } else if (p1.subList(i, i).contains("7")) {
                 dealerTotal = dealerTotal + 7;
-            }else if(p1.subList(i,i).contains("6")){
+            } else if (p1.subList(i, i).contains("6")) {
                 dealerTotal = dealerTotal + 6;
-            }else if(p1.subList(i,i).contains("5")){
+            } else if (p1.subList(i, i).contains("5")) {
                 dealerTotal = dealerTotal + 5;
-            }else if(p1.subList(i,i).contains("4")){
+            } else if (p1.subList(i, i).contains("4")) {
                 dealerTotal = dealerTotal + 4;
-            }else if(p1.subList(i,i).contains("3")){
+            } else if (p1.subList(i, i).contains("3")) {
                 dealerTotal = dealerTotal + 3;
-            }else if(p1.subList(i,i).contains("2")){
+            } else if (p1.subList(i, i).contains("2")) {
                 dealerTotal = dealerTotal + 2;
-            }else if(p1.subList(i,i).contains("Ace")){
+            } else if (p1.subList(i, i).contains("Ace")) {
                 dealerTotal = dealerTotal + 11;
                 int dealerTotal2 = dealerTotal + 1;
             }
         }
         String dc;
-        if(dealerTotal <= 15){
+        if (dealerTotal <= 15) {
             int h1 = r.nextInt(rc);
             rc--;
-            dealer.add (deck.get(h1));
+            dealer.add(deck.get(h1));
             deck.remove(h1);
             dc = "The dealer chose to hit";
-        }else if(dealerTotal >= 16){
+        } else if (dealerTotal >= 16) {
             dc = "The dealer chose to stay";
-        }else{
+        } else {
             dc = "There is an error";
         }
         return dc;
     }
 
-    public boolean isBust(){
+    public boolean isBust() {
         int p1Total = 0;
-
-        for (int i = 0;i < p1.size(); i++ ){
-            if(p1.subList(i,i).contains("K")){
+//something wrong with bust
+        for (int i = 0; i < p1.size(); i++) {
+            if (p1.subList(i, i).contains("K")) {
                 p1Total = p1Total + 10;
-            }else if(p1.subList(i,i).contains("Q")){
+            } else if (p1.subList(i, i).contains("Q")) {
                 p1Total = p1Total + 10;
-            }else if(p1.subList(i,i).contains("J")){
+            } else if (p1.subList(i, i).contains("J")) {
                 p1Total = p1Total + 10;
-            }else if(p1.subList(i,i).contains("10")){
+            } else if (p1.subList(i, i).contains("10")) {
                 p1Total = p1Total + 10;
-            }else if(p1.subList(i,i).contains("9")){
+            } else if (p1.subList(i, i).contains("9")) {
                 p1Total = p1Total + 9;
-            }else if(p1.subList(i,i).contains("8")){
+            } else if (p1.subList(i, i).contains("8")) {
                 p1Total = p1Total + 8;
-            }else if(p1.subList(i,i).contains("7")){
+            } else if (p1.subList(i, i).contains("7")) {
                 p1Total = p1Total + 7;
-            }else if(p1.subList(i,i).contains("6")){
+            } else if (p1.subList(i, i).contains("6")) {
                 p1Total = p1Total + 6;
-            }else if(p1.subList(i,i).contains("5")){
+            } else if (p1.subList(i, i).contains("5")) {
                 p1Total = p1Total + 5;
-            }else if(p1.subList(i,i).contains("4")){
+            } else if (p1.subList(i, i).contains("4")) {
                 p1Total = p1Total + 4;
-            }else if(p1.subList(i,i).contains("3")){
+            } else if (p1.subList(i, i).contains("3")) {
                 p1Total = p1Total + 3;
-            }else if(p1.subList(i,i).contains("2")){
+            } else if (p1.subList(i, i).contains("2")) {
                 p1Total = p1Total + 2;
-            }else if(p1.subList(i,i).contains("Ace")){
+            } else if (p1.subList(i, i).contains("Ace")) {
                 p1Total = p1Total + 11;
                 int p1Total2 = p1Total + 1;
             }
         }
+        System.out.println("total:  " + p1Total);
+
         if (p1Total > 21) {
             System.out.println("You Suk. You Ded. You Bad.");
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public boolean isBJ(){
+    public boolean isBJ() {
         int p1Total = 0;
         int p1Total2 = 0;
         boolean isBJ;
         int ac = 0;
 
-        for (int i = 0;i < p1.size(); i++ ){
-            if(p1.subList(i,i).contains("K")){
+        for (int i = 0; i < p1.size(); i++) {
+            if (p1.subList(i, i).contains("K")) {
                 p1Total = p1Total + 10;
-            }else if(p1.subList(i,i).contains("Q")){
+            } else if (p1.subList(i, i).contains("Q")) {
                 p1Total = p1Total + 10;
-            }else if(p1.subList(i,i).contains("J")){
+            } else if (p1.subList(i, i).contains("J")) {
                 p1Total = p1Total + 10;
-            }else if(p1.subList(i,i).contains("10")){
+            } else if (p1.subList(i, i).contains("10")) {
                 p1Total = p1Total + 10;
-            }else if(p1.subList(i,i).contains("9")){
+            } else if (p1.subList(i, i).contains("9")) {
                 p1Total = p1Total + 9;
-            }else if(p1.subList(i,i).contains("8")){
+            } else if (p1.subList(i, i).contains("8")) {
                 p1Total = p1Total + 8;
-            }else if(p1.subList(i,i).contains("7")){
+            } else if (p1.subList(i, i).contains("7")) {
                 p1Total = p1Total + 7;
-            }else if(p1.subList(i,i).contains("6")){
+            } else if (p1.subList(i, i).contains("6")) {
                 p1Total = p1Total + 6;
-            }else if(p1.subList(i,i).contains("5")){
+            } else if (p1.subList(i, i).contains("5")) {
                 p1Total = p1Total + 5;
-            }else if(p1.subList(i,i).contains("4")){
+            } else if (p1.subList(i, i).contains("4")) {
                 p1Total = p1Total + 4;
-            }else if(p1.subList(i,i).contains("3")){
+            } else if (p1.subList(i, i).contains("3")) {
                 p1Total = p1Total + 3;
-            }else if(p1.subList(i,i).contains("2")){
+            } else if (p1.subList(i, i).contains("2")) {
                 p1Total = p1Total + 2;
-            }else if(p1.subList(i,i).contains("Ace")){
+            } else if (p1.subList(i, i).contains("Ace")) {
                 p1Total = p1Total + 11;
                 p1Total2 = p1Total + 1;
-                if (p1Total > 21 || p1Total > p1Total2){
+                if (p1Total > 21 || p1Total > p1Total2) {
                     ac = p1Total;
-                }else if(p1Total < p1Total2){
+                } else if (p1Total < p1Total2) {
                     ac = p1Total2;
                 }
             }
         }
-        if(ac == 21 || p1Total == 21){
+        if (ac == 21 || p1Total == 21) {
             isBJ = true;
-        }else{
+        } else {
             isBJ = false;
         }
         return isBJ;
     }
 
 
-    public void hitStay (){
+    public void hitStay() {
         System.out.println("hit (h) or stay (s)");
         String hs = s.nextLine();
-        if(hs.equalsIgnoreCase("h")){
+        if (hs.equalsIgnoreCase("h")) {
             //add a card
             //show hand
             int h1 = r.nextInt(rc);
             rc--;
-            p1.add (deck.get(h1));
+            p1.add(deck.get(h1));
             deck.remove(h1);
             System.out.println(p1);
-        }else if(hs.equalsIgnoreCase("s")){
-            //show hand
-            System.out.print("Your hand: ");
-            for(int i = 0; i<p1.size(); i++){
-                System.out.print(p1.get(i) + ",");
+            System.out.println("hit (h) or stay (s)");
+            String hs2 = s.nextLine();
+            isBust();
+            if (hs2.equalsIgnoreCase("h")) {
+                //add a card
+                //show hand
+                int h2 = r.nextInt(rc);
+                rc--;
+                p1.add(deck.get(h2));
+                deck.remove(h2);
+                System.out.println(p1);
+                System.out.println("hit (h) or stay (s)");
+                String hs3 = s.nextLine();
+                isBust();
+                if (hs3.equalsIgnoreCase("h")) {
+                    //add a card
+                    //show hand
+                    int h3 = r.nextInt(rc);
+                    rc--;
+                    p1.add(deck.get(h3));
+                    deck.remove(h3);
+                    System.out.println(p1);
+                    isBust();
+                } else if (hs.equalsIgnoreCase("s") || hs2.equalsIgnoreCase("s") || hs3.equalsIgnoreCase("s")) {
+                    //show hand
+                    System.out.print("Your hand: ");
+                    for (int i = 0; i < p1.size(); i++) {
+                        System.out.print(p1.get(i) + ",");
+                    }
+                } else {
+                    System.out.println("Invalid input.");
+                }
             }
-        }else{
-            System.out.println("Invalid input.");
         }
     }
 
