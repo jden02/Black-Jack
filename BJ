@@ -11,9 +11,10 @@ public class blackJack {
     ArrayList dealer = new ArrayList();//this is the dealer's hand
     static final ArrayList deck = new ArrayList();
     Scanner s = new Scanner(System.in);
+    int p1Total = 0;
+    int aceChoice = 0;
 
-
-    public ArrayList setDeck(ArrayList deck) {
+    public ArrayList setDeck(ArrayList deck)   {
         //sets deck of all non numerical cards
         deck.add("Ace of Clubs");
         deck.add("Ace of Spades");
@@ -57,29 +58,32 @@ public class blackJack {
 
     public void deal(ArrayList p1) {
         int c1 = r.nextInt(rc);
-        //System.out.println(c1);
         rc--;
         int c2 = r.nextInt(rc);
-        //System.out.println(c2);
         rc--;
         int c3 = r.nextInt(rc);
-        //System.out.println(c3);
         rc--;
         int c4 = r.nextInt(rc);
-        //System.out.println(c4);
         rc--;
         p1.add(0, deck.get(c1));
         p1.add(1, deck.get(c2));
         dealer.add(deck.get(c3));
         dealer.add(deck.get(c4));
-        //System.out.println("Your hand: "+ deck.get(c1) + ", " + deck.get(c2));
-        //System.out.println("Your hand: "+ p1.get(0) + ", " + p1.get(1));
         deck.remove(c1);
         deck.remove(c2);
         deck.remove(c3);
         deck.remove(c4);
         System.out.println("The dealer's cards: " + dealer.get(0));
         System.out.println("Your hand: " + p1.get(0) + ", " + p1.get(1));
+        if(p1.contains("Ace")){
+            System.out.println("Do you want your ace to have the value of 1 or 11?");
+            int sbChoice = s.nextInt();
+            if (sbChoice != 1 || sbChoice != 11){
+                System.out.println("Invalid input dummy.");
+            }else{
+                aceChoice = sbChoice;
+            }
+        }
     }
 
     public String dealer() {
@@ -130,94 +134,81 @@ public class blackJack {
     }
 
     public boolean isBust() {
-        int p1Total = 0;
-//something wrong with bust
+        boolean isBust = false;
         for (int i = 0; i < p1.size(); i++) {
-            if (p1.subList(i, i).contains("K")) {
+            if (p1.get(i) == "K") {
                 p1Total = p1Total + 10;
-            } else if (p1.subList(i, i).contains("Q")) {
+            } else if (p1.get(i) == "Q") {
                 p1Total = p1Total + 10;
-            } else if (p1.subList(i, i).contains("J")) {
+            } else if (p1.get(i) == "J") {
                 p1Total = p1Total + 10;
-            } else if (p1.subList(i, i).contains("10")) {
+            } else if (p1.get(i) == "10") {
                 p1Total = p1Total + 10;
-            } else if (p1.subList(i, i).contains("9")) {
+            } else if (p1.get(i) == "9") {
                 p1Total = p1Total + 9;
-            } else if (p1.subList(i, i).contains("8")) {
+            } else if (p1.get(i) == "8") {
                 p1Total = p1Total + 8;
-            } else if (p1.subList(i, i).contains("7")) {
+            } else if (p1.get(i) == "7") {
                 p1Total = p1Total + 7;
-            } else if (p1.subList(i, i).contains("6")) {
+            } else if (p1.get(i) == "6") {
                 p1Total = p1Total + 6;
-            } else if (p1.subList(i, i).contains("5")) {
+            } else if (p1.get(i) == "5") {
                 p1Total = p1Total + 5;
-            } else if (p1.subList(i, i).contains("4")) {
+            } else if (p1.get(i) == "4") {
                 p1Total = p1Total + 4;
-            } else if (p1.subList(i, i).contains("3")) {
+            } else if (p1.get(i) == "3") {
                 p1Total = p1Total + 3;
-            } else if (p1.subList(i, i).contains("2")) {
+            } else if (p1.get(i) == "2") {
                 p1Total = p1Total + 2;
-            } else if (p1.subList(i, i).contains("Ace")) {
-                p1Total = p1Total + 11;
-                int p1Total2 = p1Total + 1;
+            } else if (p1.get(i) == "Ace") {
+                p1Total = p1Total + aceChoice;
             }
         }
-        System.out.println("total:  " + p1Total);
-
         if (p1Total > 21) {
             System.out.println("You Suk. You Ded. You Bad.");
-            return true;
-        } else {
-            return false;
+            isBust = true;
         }
+        System.out.print("isBust = ");
+        return isBust;
     }
 
     public boolean isBJ() {
-        int p1Total = 0;
-        int p1Total2 = 0;
-        boolean isBJ;
-        int ac = 0;
+        boolean isBJ = false;
 
         for (int i = 0; i < p1.size(); i++) {
-            if (p1.subList(i, i).contains("K")) {
+            if (p1.get(i) == "K") {
                 p1Total = p1Total + 10;
-            } else if (p1.subList(i, i).contains("Q")) {
+            } else if (p1.get(i) == "Q") {
                 p1Total = p1Total + 10;
-            } else if (p1.subList(i, i).contains("J")) {
+            } else if (p1.get(i) == "J") {
                 p1Total = p1Total + 10;
-            } else if (p1.subList(i, i).contains("10")) {
+            } else if (p1.get(i) == "10") {
                 p1Total = p1Total + 10;
-            } else if (p1.subList(i, i).contains("9")) {
+            } else if (p1.get(i) == "9") {
                 p1Total = p1Total + 9;
-            } else if (p1.subList(i, i).contains("8")) {
+            } else if (p1.get(i) == "8") {
                 p1Total = p1Total + 8;
-            } else if (p1.subList(i, i).contains("7")) {
+            } else if (p1.get(i) == "7") {
                 p1Total = p1Total + 7;
-            } else if (p1.subList(i, i).contains("6")) {
+            } else if (p1.get(i) == "6") {
                 p1Total = p1Total + 6;
-            } else if (p1.subList(i, i).contains("5")) {
+            } else if (p1.get(i) == "5") {
                 p1Total = p1Total + 5;
-            } else if (p1.subList(i, i).contains("4")) {
+            } else if (p1.get(i) == "4") {
                 p1Total = p1Total + 4;
-            } else if (p1.subList(i, i).contains("3")) {
+            } else if (p1.get(i) == "3") {
                 p1Total = p1Total + 3;
-            } else if (p1.subList(i, i).contains("2")) {
+            } else if (p1.get(i) == "2") {
                 p1Total = p1Total + 2;
-            } else if (p1.subList(i, i).contains("Ace")) {
-                p1Total = p1Total + 11;
-                p1Total2 = p1Total + 1;
-                if (p1Total > 21 || p1Total > p1Total2) {
-                    ac = p1Total;
-                } else if (p1Total < p1Total2) {
-                    ac = p1Total2;
-                }
+            } else if (p1.get(i) == "Ace") {
+                p1Total = p1Total + aceChoice;
             }
         }
-        if (ac == 21 || p1Total == 21) {
+        if(p1Total == 21){
             isBJ = true;
-        } else {
-            isBJ = false;
         }
+        System.out.println("Total: " + p1Total);
+        System.out.print("isBJ = ");
         return isBJ;
     }
 
