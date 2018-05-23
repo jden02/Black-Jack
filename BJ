@@ -87,6 +87,7 @@ public class blackJack {
     }
 
     public String dealer() {
+        //fix this from p1 to dealer
         int dealerTotal = 0;
         for (int i = 0; i < p1.size(); i++) {
             if (p1.subList(i, i).contains("K")) {
@@ -135,80 +136,19 @@ public class blackJack {
 
     public boolean isBust() {
         boolean isBust = false;
-        for (int i = 0; i < p1.size(); i++) {
-            if (p1.get(i) == "K") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "Q") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "J") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "10") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "9") {
-                p1Total = p1Total + 9;
-            } else if (p1.get(i) == "8") {
-                p1Total = p1Total + 8;
-            } else if (p1.get(i) == "7") {
-                p1Total = p1Total + 7;
-            } else if (p1.get(i) == "6") {
-                p1Total = p1Total + 6;
-            } else if (p1.get(i) == "5") {
-                p1Total = p1Total + 5;
-            } else if (p1.get(i) == "4") {
-                p1Total = p1Total + 4;
-            } else if (p1.get(i) == "3") {
-                p1Total = p1Total + 3;
-            } else if (p1.get(i) == "2") {
-                p1Total = p1Total + 2;
-            } else if (p1.get(i) == "Ace") {
-                p1Total = p1Total + aceChoice;
-            }
-        }
         if (p1Total > 21) {
             System.out.println("You Suk. You Ded. You Bad.");
             isBust = true;
         }
-        System.out.print("isBust = ");
         return isBust;
     }
 
     public boolean isBJ() {
         boolean isBJ = false;
-
-        for (int i = 0; i < p1.size(); i++) {
-            if (p1.get(i) == "K") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "Q") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "J") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "10") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "9") {
-                p1Total = p1Total + 9;
-            } else if (p1.get(i) == "8") {
-                p1Total = p1Total + 8;
-            } else if (p1.get(i) == "7") {
-                p1Total = p1Total + 7;
-            } else if (p1.get(i) == "6") {
-                p1Total = p1Total + 6;
-            } else if (p1.get(i) == "5") {
-                p1Total = p1Total + 5;
-            } else if (p1.get(i) == "4") {
-                p1Total = p1Total + 4;
-            } else if (p1.get(i) == "3") {
-                p1Total = p1Total + 3;
-            } else if (p1.get(i) == "2") {
-                p1Total = p1Total + 2;
-            } else if (p1.get(i) == "Ace") {
-                p1Total = p1Total + aceChoice;
-            }
-        }
         if(p1Total == 21){
             isBJ = true;
         }
         System.out.println("Total: " + p1Total);
-        System.out.print("isBJ = ");
         return isBJ;
     }
 
@@ -224,48 +164,61 @@ public class blackJack {
             p1.add(deck.get(h1));
             deck.remove(h1);
             System.out.println(p1);
-            System.out.println("hit (h) or stay (s)");
-            String hs2 = s.nextLine();
+            converter9000();
             isBust();
-            if (hs2.equalsIgnoreCase("h")) {
-                //add a card
+            isBJ();
+            hitStay();
+            } else if (hs.equalsIgnoreCase("s")) {
                 //show hand
-                int h2 = r.nextInt(rc);
-                rc--;
-                p1.add(deck.get(h2));
-                deck.remove(h2);
-                System.out.println(p1);
-                System.out.println("hit (h) or stay (s)");
-                String hs3 = s.nextLine();
-                isBust();
-                if (hs3.equalsIgnoreCase("h")) {
-                    //add a card
-                    //show hand
-                    int h3 = r.nextInt(rc);
-                    rc--;
-                    p1.add(deck.get(h3));
-                    deck.remove(h3);
-                    System.out.println(p1);
-                    isBust();
-                } else if (hs.equalsIgnoreCase("s") || hs2.equalsIgnoreCase("s") || hs3.equalsIgnoreCase("s")) {
-                    //show hand
-                    System.out.print("Your hand: ");
-                    for (int i = 0; i < p1.size(); i++) {
-                        System.out.print(p1.get(i) + ",");
-                    }
-                } else {
-                    System.out.println("Invalid input.");
+                System.out.print("Your hand: ");
+                for (int i = 0; i < p1.size(); i++) {
+                    System.out.print(p1.get(i) + ",");
                 }
-            }
+        } else {
+            System.out.println("Invalid input.");
+            hitStay();
         }
     }
-
+    //converter
+    public int converter9000 (){
+        for (int i = 0; i < p1.size(); i++) {
+            if (p1.get(i) == "K") {
+                p1Total = p1Total + 10;
+            } else if (p1.get(i) == "Q") {
+                p1Total = p1Total + 10;
+            } else if (p1.get(i) == "J") {
+                p1Total = p1Total + 10;
+            } else if (p1.get(i) == "10") {
+                p1Total = p1Total + 10;
+            } else if (p1.get(i) == "9") {
+                p1Total = p1Total + 9;
+            } else if (p1.get(i) == "8") {
+                p1Total = p1Total + 8;
+            } else if (p1.get(i) == "7") {
+                p1Total = p1Total + 7;
+            } else if (p1.get(i) == "6") {
+                p1Total = p1Total + 6;
+            } else if (p1.get(i) == "5") {
+                p1Total = p1Total + 5;
+            } else if (p1.get(i) == "4") {
+                p1Total = p1Total + 4;
+            } else if (p1.get(i) == "3") {
+                p1Total = p1Total + 3;
+            } else if (p1.get(i) == "2") {
+                p1Total = p1Total + 2;
+            } else if (p1.get(i) == "Ace") {
+                p1Total = p1Total + aceChoice;
+            }
+        }
+        return p1Total;
+    }
 
     public static void main(String[] args) {
         //creates deck
         blackJack a = new blackJack();
         a.setDeck(deck);
         a.deal(deck);
+        a.isBust();
         a.isBJ();
         a.hitStay();
         a.isBust();
