@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class blackJack {
         return deck;
     }
 
-    public void deal(ArrayList p1) {
+    public void deal() {
         int c1 = r.nextInt(rc);
         rc--;
         int c2 = r.nextInt(rc);
@@ -148,7 +149,6 @@ public class blackJack {
         if(p1Total == 21){
             isBJ = true;
         }
-        System.out.println("Total: " + p1Total);
         return isBJ;
     }
 
@@ -161,6 +161,7 @@ public class blackJack {
             //show hand
             int h1 = r.nextInt(rc);
             rc--;
+            System.out.println(p1);
             p1.add(deck.get(h1));
             deck.remove(h1);
             System.out.println(p1);
@@ -168,12 +169,12 @@ public class blackJack {
             isBust();
             isBJ();
             hitStay();
-            } else if (hs.equalsIgnoreCase("s")) {
-                //show hand
-                System.out.print("Your hand: ");
-                for (int i = 0; i < p1.size(); i++) {
-                    System.out.print(p1.get(i) + ",");
-                }
+        } else if (hs.equalsIgnoreCase("s")) {
+            //show hand
+            System.out.print("Your hand: ");
+            for (int i = 0; i < p1.size(); i++) {
+                System.out.print(p1.get(i) + ",");
+            }
         } else {
             System.out.println("Invalid input.");
             hitStay();
@@ -181,35 +182,37 @@ public class blackJack {
     }
     //converter
     public int converter9000 (){
+        System.out.println(p1);
         for (int i = 0; i < p1.size(); i++) {
-            if (p1.get(i) == "K") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "Q") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "J") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "10") {
-                p1Total = p1Total + 10;
-            } else if (p1.get(i) == "9") {
-                p1Total = p1Total + 9;
-            } else if (p1.get(i) == "8") {
-                p1Total = p1Total + 8;
-            } else if (p1.get(i) == "7") {
-                p1Total = p1Total + 7;
-            } else if (p1.get(i) == "6") {
-                p1Total = p1Total + 6;
-            } else if (p1.get(i) == "5") {
-                p1Total = p1Total + 5;
-            } else if (p1.get(i) == "4") {
-                p1Total = p1Total + 4;
-            } else if (p1.get(i) == "3") {
-                p1Total = p1Total + 3;
-            } else if (p1.get(i) == "2") {
-                p1Total = p1Total + 2;
-            } else if (p1.get(i) == "Ace") {
-                p1Total = p1Total + aceChoice;
+                    if (p1.subList(i, i).contains ("K")) {
+                        p1Total = p1Total + 10;
+                    } else if (p1.subList(i, i).equals ("Q")) {
+                        p1Total = p1Total + 10;
+                    } else if (p1.subList(i, i).equals ("J")) {
+                        p1Total = p1Total + 10;
+                    } else if (p1.subList(i, i).equals ("1")) {
+                        p1Total = p1Total + 10;
+                    } else if (p1.subList(i, i).equals ("9")) {
+                        p1Total = p1Total + 9;
+                    } else if (p1.subList(i, i).equals ("8")) {
+                        p1Total = p1Total + 8;
+                    } else if (p1.subList(i, i).equals ("7")) {
+                        p1Total = p1Total + 7;
+                    } else if (p1.subList(i, i).equals ("6")) {
+                        p1Total = p1Total + 6;
+                    } else if (p1.subList(i, i).equals ("5")) {
+                        p1Total = p1Total + 5;
+                    } else if (p1.subList(i, i).equals ("4")) {
+                        p1Total = p1Total + 4;
+                    } else if (p1.subList(i, i).equals ("3")) {
+                        p1Total = p1Total + 3;
+                    } else if (p1.subList(i, i).equals ("2")) {
+                        p1Total = p1Total + 2;
+                    } else if (p1.subList(i, i).equals ("A")) {
+                        p1Total = p1Total + aceChoice;
             }
         }
+        System.out.println("Total: " + p1Total);
         return p1Total;
     }
 
@@ -217,10 +220,12 @@ public class blackJack {
         //creates deck
         blackJack a = new blackJack();
         a.setDeck(deck);
-        a.deal(deck);
+        a.deal();
+
         a.isBust();
         a.isBJ();
         a.hitStay();
+
         a.isBust();
         a.isBJ();
     }
