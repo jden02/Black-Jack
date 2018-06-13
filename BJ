@@ -81,7 +81,9 @@ public class blackJack {
         deck.remove(c4);
         System.out.println("The dealer's cards: " + dealer.get(0));
         System.out.println("Your hand: " + p1.get(0) + ", " + p1.get(1));
-        AC();
+        if (p1.subList(0,2).contains("Ace")) {
+            AC();
+        }
         return isBJ();
     }
 
@@ -135,7 +137,9 @@ public class blackJack {
             p1.add((String) deck.get(h1));
             deck.remove(h1);
             System.out.println(p1);
-            AC();
+            if(p1.contains ("Ace")) {
+                AC();
+            }
             converter9000(p1,p1Total);
             if (!isBust() || !isBJ()){
                 hitStay();
@@ -200,8 +204,10 @@ public class blackJack {
         }
         if(endgame){
             System.out.println("GG! You won");
-        }else{
+        }else if (!endgame){
             System.out.println("HAHA! you lost");
+        }else{
+            System.out.println("System Error");
         }
         return null;
     }
