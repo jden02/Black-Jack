@@ -75,12 +75,12 @@ public class blackJack {
         int c4 = r.nextInt(rc);
         rc--;
         p1.add((String) deck.get(c1));
-        p1.add((String) deck.get(c2));
-        dealer.add((String) deck.get(c3));
-        dealer.add((String) deck.get(c4));
         deck.remove(c1);
+        p1.add((String) deck.get(c2));
         deck.remove(c2);
+        dealer.add((String) deck.get(c3));
         deck.remove(c3);
+        dealer.add((String) deck.get(c4));
         deck.remove(c4);
         System.out.println("The dealer's cards: " + dealer.get(0));
         System.out.println("Your hand: " + p1.get(0) + ", " + p1.get(1));
@@ -113,7 +113,6 @@ public class blackJack {
     }
 
     public boolean isBust() {
-        converter9000(p1);
         if (p1Total > 21) {
             System.out.println("You Busted. Dealer wins");
             bust = true;
@@ -125,7 +124,6 @@ public class blackJack {
     }
 
     public boolean isBJ() {
-        System.out.println("enter bj");
         if(p1Total == 21){
             BJ = true;
             System.out.println("You Win!");
@@ -146,12 +144,10 @@ public class blackJack {
             p1.add((String) deck.get(h1));
             deck.remove(h1);
             System.out.println(p1);
-            if(p1.contains ("Ace")) {
-                AC();
-            }
-            if (!isBust() || !isBJ()){
-                hitStay();
-            }
+            converter9000(p1);
+            isBJ();
+            isBust();
+            hitStay();
         } else if (hs.equalsIgnoreCase("s")) {
             //show hand
             System.out.print("Your hand: ");
@@ -193,7 +189,7 @@ public class blackJack {
             } else if (card.startsWith("2")) {
                 totalIn = totalIn + 2;
             } else if (card.startsWith("A")) {
-                totalIn = totalIn + aceChoice;
+                totalIn = totalIn + AC();
             }
         }
         if(hand == p1){
@@ -221,15 +217,15 @@ public class blackJack {
         return null;
     }
     public int AC(){
-            System.out.println("Do you want your ace to have the value of 1 or 11?");
-            int sbChoice = s.nextInt();
-            if (sbChoice == 1){
-                aceChoice = 1;
-            }else if (sbChoice == 11){
-                aceChoice = 11;
-            }else{
-                System.out.println("Invalid input dummy.");
-            }
+        System.out.println("Do you want your ace to have the value of 1 or 11?");
+        int sbChoice = s.nextInt();
+        if (sbChoice == 1){
+            aceChoice = 1;
+        }else if (sbChoice == 11){
+            aceChoice = 11;
+        }else{
+            System.out.println("Invalid input dummy.");
+        }
         return aceChoice;
     }
 }
